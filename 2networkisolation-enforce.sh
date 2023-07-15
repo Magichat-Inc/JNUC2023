@@ -51,7 +51,8 @@
 # The dependencies must be pre-staged to your devices in order for this workflow to complete fully.  Please the see github.com/jamf/jamfprotect Wiki for more information.
 
 ####################################################################################################
-
+# For JNUC 2023 conference
+# https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
 # Edited by Natnicha Sangsasitorn, Magic Hat Inc. 
 # 15/07/2023
 # To able to send the information to Splunk, we need to whitelist Splunk communication.
