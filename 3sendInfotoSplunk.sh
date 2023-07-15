@@ -12,7 +12,7 @@
 # The settings you need to set:
 # 1. splunkHECURL (Splunk URL), dashboardHECtoken (Main HEC token), endingHECtoken (Separate HEC token for notifying Slack)
 # 2. We convert time to JST(Japan Standard Time) which is UTC+9. 
-# If you would like to convert to your timezone, you can change Number of seconds added on line 60. (Number of seconds=Number of hours differ from UTC*60*60)
+# If you would like to convert to your timezone, you can change Number of seconds added on line 61. (Number of seconds=Number of hours differ from UTC*60*60)
 # -----------------------------------
 
 # Clean up Aftermath file
@@ -39,7 +39,8 @@ echo $aftermathTimeline
 
 #=========================================================
 # Set point of time of the events you'd like to send to Splunk (for example, send the event occurred 9 hour before until NOW )
-# Process the time format (in local timezone format) and add time occurred, serial number, and host name to the event
+# Convert the event time to local timezone (JST) 
+# Compose the json file from the event data and add occurence time, serial number, and host name info to the event's json file
 
 hostName=$(scutil --get ComputerName)
 splunkHECURL=""
