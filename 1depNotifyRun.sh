@@ -1,7 +1,17 @@
 #!/bin/bash
 
-# to avoid the error, we need to clean the log everytime running the depnotify again
+#===================================
+# For JNUC 2023 conference
+# https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
+# Natnicha Sangsasitorn - Magic Hat Inc. 
+# 15/07/2023
+#
+# Setting you needs to set:
+# 1. POLICY_ARRAY : description,policy's custom trigger
+# Optional: Customize the wording for buttons and description etc.
+#===================================
 
+# to avoid the error, we need to clean the log everytime running the depnotify again
 if [[ -f /private/var/tmp/depnotify.log ]]
 then  rm -rf /private/var/tmp/depnotify.log 
 fi
@@ -161,7 +171,7 @@ TRIGGER="event"
 # The policy array must be formatted "Progress Bar text,customTrigger". These will be
 # run in order as they appear below.
   POLICY_ARRAY=(
-    "Enforce network isolation on your machine.. ,networkIsolation"
+    "Kill the process and Enforce network isolation on your machine.. ,networkIsolation"
     "Gather all browsers' history and activities for further cause analysis.. ,aftermathRun"
   )
 
