@@ -1,25 +1,5 @@
 #!/bin/bash
 
-#===================================
-# For JNUC 2023 conference
-# https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
-# Natnicha Sangsasitorn - Magic Hat Inc. 
-# 15/07/2023
-#
-# Setting you needs to set:
-# 1. POLICY_ARRAY : description,policy's custom trigger
-# Optional: Customize the wording for buttons and description etc.
-#===================================
-
-# to avoid the error, we need to clean the log everytime running the depnotify again
-if [[ -f /private/var/tmp/depnotify.log ]]
-then  rm -rf /private/var/tmp/depnotify.log 
-fi
-
-if [[ -f /private/var/tmp/com.depnotify.provisioning.done ]]
-then  rm -rf /private/var/tmp/com.depnotify.provisioning.done 
-fi
-
 #########################################################################################
 # License information
 #########################################################################################
@@ -50,6 +30,29 @@ fi
 # major testing and validation is performed.
 
 # More information at: https://github.com/jamfprofessionalservices/DEP-Notify
+
+#===================================
+# For JNUC 2023 conference
+# https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
+# Natnicha Sangsasitorn - Magic Hat Inc. 
+# 15/07/2023
+#
+# Change
+# Add the log file's removal command if there is any log files to prevent the error.
+#
+# Setting you needs to set:
+# 1. POLICY_ARRAY : description,policy's custom trigger
+# Optional: Customize the wording for buttons and description etc.
+#===================================
+
+# to avoid the error, we need to clean the log everytime running the depnotify again
+if [[ -f /private/var/tmp/depnotify.log ]]
+then  rm -rf /private/var/tmp/depnotify.log 
+fi
+
+if [[ -f /private/var/tmp/com.depnotify.provisioning.done ]]
+then  rm -rf /private/var/tmp/com.depnotify.provisioning.done 
+fi
 
 #########################################################################################
 # Testing Mode
