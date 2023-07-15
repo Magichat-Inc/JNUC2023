@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Reference: https://github.com/jamf/jamfprotect/blob/main/soar_playbooks/endpoint_network_isolation/endpoint_network_isolation_enforce.sh
 ####################################################################################################
 #
 # Copyright (c) 2021, Jamf, LLC.  All rights reserved.
@@ -51,6 +50,14 @@
 #
 # The dependencies must be pre-staged to your devices in order for this workflow to complete fully.  Please the see github.com/jamf/jamfprotect Wiki for more information.
 
+####################################################################################################
+
+# Edited by Natnicha Sangsasitorn, Magic Hat Inc. 
+# 15/07/2023
+# To able to send the information to Splunk, we need to whitelist Splunk communication.
+# Thus, we set additional Splunk IP address and Splunk HTTP Endpoint Collection URL (Line 72-73) into PF's allow rule.
+# Also, before the network isolation enforces, killing reverseShell process is added and executed. (Line 260-262)
+
 #####################################################
 ############# Script Configuration Area #############
 #####################################################
@@ -62,12 +69,12 @@ loggedInUser=$(stat -f %Su /dev/console)
 # PACKET FILTER FIREWALL SETTINGS
 # This is the required IP range for persisting APNs connectivity on macOS devices.  Please refer to Apple's documentation for more information: https://support.apple.com/en-gb/HT210060.  Values in the variable must be separated by a comma and space.
 apnsIPRange="17.0.0.0/8"
-splunkIP="18.178.15.25"
-splunkHEC="splunkhec.magichat.cloud"
+splunkIP=""
+splunkHEC=""
 
 # FILE NAMING CONVENTION
 # The naming convention to use for any preference files created throughout this workflow.  This will be used for preference files so must be in domain naming format, such as 'com.acmesoft.isolate' and will often be followed by .plist, as an exmaple.
-fileName="com.magichat.isolate"
+fileName="com.acmesoft.isolate"
 
 # INCIDENT RESPONSE RESOURCES FOLDER
 # Incident Response directory containing resources for this workflow.  By default the files expected in this directory are:
@@ -250,6 +257,10 @@ AdditionalJamfProPolicy () {
 #####################################################
 ############### Workflow Starts Here ################
 #####################################################
+#kill the process
+Pid=$(ps -ef | grep -v grep | grep "/bin/sh -i" | awk '{print $2}')
+kill -9 $Pid
+
 set -o nounset
 
 # Call function
@@ -272,17 +283,3 @@ UserNotification
 
 # Call function
 AdditionalJamfProPolicy
-
-
-
-
-
-
-
-
-
-
-
-
-
-
