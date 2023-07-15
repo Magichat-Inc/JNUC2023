@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#===================================
+# For JNUC 2023 conference
+# https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
+# Natnicha Sangsasitorn - Magic Hat Inc. 
+# 15/07/2023
+#===================================
+
 #check if DEPNotify app is installed
 if [[ ! -d /Applications/Utilities/DEPNotify.app ]]
 then
@@ -22,5 +29,6 @@ fi
 
 sleep 10
 
+#Running the main workflow script
 echo "Running DEPNotify's workflow script"
 jamf policy -event depnotifyScript
