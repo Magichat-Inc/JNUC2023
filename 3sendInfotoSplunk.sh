@@ -1,39 +1,56 @@
 #!/bin/bash
 
+# -----------------------------------
+# For JNUC 2023 conference
+# https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
+# Natnicha Sangsasitorn - Magic Hat Inc. 
+# 15/07/2023
+#
+# The script cleans up AfterMath log and run AfterMath to capture browser and system's activity logs.
+# Then, unzip the file and process each events and send to Splunk through HTTP Endpoint Collection (HEC).
+#
+# The settings you need to set:
+# 1. splunkHECURL (Splunk URL), dashboardHECtoken (Main HEC token), endingHECtoken (Separate HEC token for notifying Slack)
+# 2. We convert time to JST(Japan Standard Time) which is UTC+9. 
+# If you would like to convert to your timezone, you can change Number of seconds added on line 60. (Number of seconds=Number of hours differ from UTC*60*60)
+# -----------------------------------
+
+# Clean up Aftermath file
 sudo aftermath --cleanup
 sleep 10
 
-# my computer takes about 4 min
+# Gather all logs
 sudo aftermath --pretty
 serialNumber=$(ioreg -l | awk -F'"' '/IOPlatformSerialNumber/{print $4}')
 aftermathOriginalFile="/private/tmp/Aftermath_${serialNumber}.zip"
 echo $aftermathOriginalFile
 sleep 10
 
-# my computer takes about 1.5 min
+# Run analyze mode to make all log in timeline format
 sudo aftermath --analyze ${aftermathOriginalFile} --pretty
 aftermathAnalyzeResults="/private/tmp/Aftermath_Analysis_${serialNumber}.zip"
 echo $aftermathAnalyzeResults
 sleep 5
 
+# Unzip the timeline file we would like to process
 unzip ${aftermathAnalyzeResults} -d /private/tmp
 aftermathTimeline="/private/tmp/Aftermath_Analysis_${serialNumber}/storyline.csv"
 echo $aftermathTimeline
 
 #=========================================================
-# add serial information on json file
-# compare the date put the information from ytd time to td time
-# send to splunk HEC
+# Set point of time of the events you'd like to send to Splunk (for example, send the event occurred 9 hour before until NOW )
+# Process the time format (in local timezone format) and add time occurred, serial number, and host name to the event
 
 hostName=$(scutil --get ComputerName)
+splunkHECURL=""
+endingHECtoken=""
+dashboardHECtoken=""
+
 #From which point of time do you like to send the data to splunk (for example, 9 hour or 1 day from NOW )
 #now=$(date -v-1d +"%Y-%m-%dT%H:%M:%SZ")
 now=$(date -v -9H +"%Y-%m-%dT%H:%M:%SZ")
 echo $now
 timestamp1=$(date -j -f "%Y-%m-%dT%H:%M:%SZ" "$now" "+%s")
-splunkHECURL="https://splunkhec.magichat.cloud"
-endingHECtoken="00aba3c6-3000-49ed-b08a-f16dd2c2209a"
-dashboardHECtoken="2c0263dc-7534-4720-be7d-fc381464398c"
 
 while IFS='' read -r line || [ "$line" ]
 do
@@ -43,7 +60,8 @@ do
 	originalDateEpochJST=$(( $originalDateEpoch+32400 ))
 	originalDateJST=$(date -r $originalDateEpochJST +"%Y-%m-%dT%H:%M:%SZ")
 	
-	#In order to notify slack, we set separate HEC for sending the end message. Once Splunk got the message sent, it will notify Slack channel.
+	#In order to notify slack, we set separate HEC for sending the end message. 
+ 	#Once Splunk got the message sent, it will notify Slack channel.
 	if [[ "$timestamp1" -gt "$originalDateEpochJST" ]]; then
     	json="{\"event\": \"ENDING MESSAGE\", \"serialNumber\": \"$serialNumber\", \"hostName\": \"$hostName\"}"
         curl ${splunkHECURL}/services/collector/raw -H "Authorization: Splunk ${endingHECtoken}" -d "$json"
