@@ -15,8 +15,13 @@
 # If you would like to convert to your timezone, you can change Number of seconds added on line 61. (Number of seconds=Number of hours differ from UTC*60*60)
 # -----------------------------------
 
-# Clean up Aftermath file
+# Clean up Aftermath file and log
 sudo aftermath --cleanup
+
+if [[ -f /private/tmp/aftermath_temp.txt ]]
+then  rm -rf /private/tmp/aftermath_temp.txt 
+fi
+
 sleep 10
 
 # Gather all logs
