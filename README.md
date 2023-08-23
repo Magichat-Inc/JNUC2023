@@ -2,7 +2,7 @@
 
 - [Introduction](#introduction)
 - [Overview](#overview)
-- 0checkInstallation-rundepNotifyscript.sh
+- [0checkInstallation-rundepNotifyscript.sh](#0checkInstallation-rundepNotifyscript.sh)
 
 ## [Introduction](#introduction)
 
@@ -23,7 +23,7 @@ There are 4 scripts:
 - 2networkisolation-enforce.sh
 - 3sendInfotoSplunk.sh
 
-## 0checkInstallation-rundepNotifyscript.sh
+## [0checkInstallation-rundepNotifyscript.sh](#0checkInstallation-rundepNotifyscript.sh)
 
 This script is for checking installation of afterMath (Incident Response tool) and depNotify (Graphical User Interface Popup tool) and run installation if the machine hasn't installed those tools yet.
 
