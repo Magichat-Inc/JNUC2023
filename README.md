@@ -2,7 +2,10 @@
 
 - [Introduction](#introduction)
 - [Overview](#overview)
-- [0checkInstallation-rundepNotifyscript.sh](#0checkInstallation-rundepNotifyscript.sh)
+- [0checkInstallation-rundepNotifyscript](#0checkinstallation-rundepnotifyscript)
+- [1depNotifyRun](#1depnotifyrun)
+- [2networkisolation-enforce](#2networkisolation-enforce)
+- [3sendInfotoSplunk](#3sendinfotosplunk)
 
 ## [Introduction](#introduction)
 
@@ -23,19 +26,19 @@ There are 4 scripts:
 - 2networkisolation-enforce.sh
 - 3sendInfotoSplunk.sh
 
-## [0checkInstallation-rundepNotifyscript.sh](#0checkInstallation-rundepNotifyscript.sh)
+## [0checkInstallation-rundepNotifyscript](#0checkinstallation-rundepnotifyscript)
 
 This script is for checking installation of afterMath (Incident Response tool) and depNotify (Graphical User Interface Popup tool) and run installation if the machine hasn't installed those tools yet.
 
-## 1depNotifyRun.sh
+## [1depNotifyRun](#1depnotifyrun)
 
 This script is main script for showing the progress popup while running below the settings
 - attack/breach's remedial command
 - incident response and forward those information to third party SIEM tool (Splunk)
 
-## 2networkisolation-enforce.sh
+## [2networkisolation-enforce](#2networkisolation-enforce)
 To remediate the attack or breach (Reverse shell attack is used as a sample in the workflow), we kill the interactive shell process, following by enforcing network isolation to make sure that during analysis, there is no further attempts from the attackers. So, no communication is allowed except Jamf and Splunk communication. 
 
-## 3sendInfotoSplunk.sh
+## [3sendInfotoSplunk](#3sendinfotosplunk)
 For incident response, AfterMath tool is used to gather all the evidences and events happened on the affected computers. Then, those information will be forwarded to Splunk for further analysis.
 
