@@ -2,10 +2,10 @@
 
 - [Introduction](#introduction)
 - [Overview](#overview)
-- [0checkInstallation-rundepNotifyscript](#0checkinstallation-rundepnotifyscript)
-- [1depNotifyRun](#1depnotifyrun)
-- [2networkisolation-enforce](#2networkisolation-enforce)
-- [3sendInfotoSplunk](#3sendinfotosplunk)
+  - [0checkInstallation-rundepNotifyscript](#0checkinstallation-rundepnotifyscript)
+  - [1depNotifyRun](#1depnotifyrun)
+  - [2networkisolation-enforce](#2networkisolation-enforce)
+  - [3sendInfotoSplunk](#3sendinfotosplunk)
 
 ## [Introduction](#introduction)
 
