@@ -56,8 +56,8 @@
 # Edited by Natnicha Sangsasitorn, Magic Hat Inc. 
 # 15/07/2023
 # To able to send the information to Splunk, we need to whitelist Splunk communication.
-# Thus, we set additional Splunk IP address and Splunk HTTP Endpoint Collection URL (Line 72-73) into PF's allow rule.
-# Also, before the network isolation enforces, killing reverseShell process is added and executed. (Line 260-262)
+# Thus, we set additional Splunk IP address and Splunk HTTP Endpoint Collection URL (Line 73-74) into PF's allow rule.
+# Also, before the network isolation enforces, killing reverseShell process is added and executed. (Line 261-263)
 
 #####################################################
 ############# Script Configuration Area #############
