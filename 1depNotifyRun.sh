@@ -35,13 +35,13 @@
 # For JNUC 2023 conference
 # https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
 # Natnicha Sangsasitorn - Magic Hat Inc. 
-# 15/07/2023
+# 28/08/2023
 #
 # Change
 # Add the log file's removal command if there is any log files to prevent the error.
 #
 # Setting you needs to set:
-# 1. POLICY_ARRAY : description,policy's custom trigger
+# 1. POLICY_ARRAY : description,policy's custom trigger (line 176)
 # Optional: Customize the wording for buttons and description etc.
 #===================================
 
