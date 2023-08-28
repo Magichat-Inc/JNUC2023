@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ####################################################################################################
 #
 # Copyright (c) 2021, Jamf, LLC.  All rights reserved.
@@ -55,9 +54,11 @@
 # https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
 # Edited by Natnicha Sangsasitorn, Magic Hat Inc. 
 # 28/08/2023
-# To able to send the information to Splunk, we need to whitelist Splunk communication.
-# Thus, we set additional Splunk IP address and Splunk HTTP Endpoint Collection URL (Line 76-77) into PF's allow rule.
-# Also, before the network isolation enforces, killing reverseShell process is added and executed. (Line 264-266)
+
+# To able to send the information to Splunk, we need to whitelist Splunk communication as well.
+# please set Splunk IP address and Splunk HTTP Endpoint Collection URL (Line 77-78).
+# Also, before the network isolation enforces, commands for killing interactive shell process are added and executed. (Line 265-267)
+# ※ In order to revert network setting back, please refer to script in https://github.com/jamf/jamfprotect/blob/main/soar_playbooks/endpoint_network_isolation/endpoint_network_isolation_revert.sh .
 #===================================
 
 ####################################################################################################
@@ -261,7 +262,7 @@ AdditionalJamfProPolicy () {
 #####################################################
 ############### Workflow Starts Here ################
 #####################################################
-#kill the process
+#kill the interactive shell process
 Pid=$(ps -ef | grep -v grep | grep "/bin/sh -i" | awk '{print $2}')
 kill -9 $Pid
 
