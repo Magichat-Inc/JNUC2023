@@ -20,7 +20,7 @@ else
 fi
 
 #check if Aftermath app is installed
-#AfterMath app (The version I'm using) can be downloaded from below link
+#AfterMath app (The version I'm using: 1.2.0) can be downloaded from below link
 #https://github.com/jamf/aftermath/releases
 if [[ ! -x /usr/local/bin/aftermath ]]
 then
