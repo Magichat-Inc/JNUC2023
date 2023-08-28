@@ -4,10 +4,12 @@
 # For JNUC 2023 conference
 # https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
 # Natnicha Sangsasitorn - Magic Hat Inc. 
-# 15/07/2023
+# 28/08/2023
 #===================================
 
 #check if DEPNotify app is installed
+#DEPNotify app can be downloaded from below link
+#https://gitlab.com/Mactroll/DEPNotify/-/releases
 if [[ ! -d /Applications/Utilities/DEPNotify.app ]]
 then
 	echo "Not yet installed DEPNotify.\n Start installing DEPNotify."
@@ -18,6 +20,9 @@ else
 fi
 
 #check if Aftermath app is installed
+#AfterMath app (version I used) can be downloaded from below link
+#https://github.com/stuartjash/aftermath/releases/tag/v2.0.0
+#The main repository link is https://github.com/jamf/aftermath
 if [[ ! -x /usr/local/bin/aftermath ]]
 then
 	echo "Not yet installed Aftermath.\n Start installing Aftermath."
