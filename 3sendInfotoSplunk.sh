@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# -----------------------------------
+#===================================
 # For JNUC 2023 conference
 # https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
 # Natnicha Sangsasitorn - Magic Hat Inc. 
-# 15/07/2023
+# 28/08/2023
 #
 # The script cleans up AfterMath log and run AfterMath to capture browser and system's activity logs.
 # Then, unzip the file and process each events and send to Splunk through HTTP Endpoint Collection (HEC).
@@ -13,7 +13,7 @@
 # 1. splunkHECURL (Splunk URL), dashboardHECtoken (Main HEC token), endingHECtoken (Separate HEC token for notifying Slack)
 # 2. We convert time to JST(Japan Standard Time) which is UTC+9. 
 # If you would like to convert to your timezone, you can change Number of seconds added on line 61. (Number of seconds=Number of hours differ from UTC*60*60)
-# -----------------------------------
+#===================================
 
 # Clean up Aftermath file and log
 sudo aftermath --cleanup
