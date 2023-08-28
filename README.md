@@ -32,9 +32,9 @@ This script is for checking installation of afterMath (Incident Response tool) a
 
 ## [1depNotifyRun](#1depnotifyrun)
 
-This script is main script for showing the progress popup while running below the settings
-- attack/breach's remedial command
-- incident response and forward those information to third party SIEM tool (Splunk)
+This script is the main script for showing the progress popup while running below the settings.
+- Remediate the attack/breach and enforce the network isolation 
+- Gather all activities information and forward those information to third party SIEM tool (Splunk)
 
 ## [2networkisolation-enforce](#2networkisolation-enforce)
 To remediate the attack or breach (Reverse shell attack is used as a sample in the workflow), we kill the interactive shell process, following by enforcing network isolation to make sure that during analysis, there is no further attempts from the attackers. So, no communication is allowed except Jamf and Splunk communication. 
