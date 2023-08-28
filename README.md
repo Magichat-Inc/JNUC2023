@@ -28,7 +28,7 @@ There are 4 scripts:
 
 ## [0checkInstallation-rundepNotifyscript](#0checkinstallation-rundepnotifyscript)
 
-This script is for checking installation of afterMath (Incident Response tool) and depNotify (Graphical User Interface Popup tool) and run installation if the machine hasn't installed those tools yet.
+This script is for checking installation of afterMath (Incident Response tool) and depNotify (Graphical User Interface Popup tool) and run installation if the machine hasn't installed those tools yet. If both tools are installed, then it will execute [1depNotifyRun](#1depnotifyrun) script (main script).
 
 ## [1depNotifyRun](#1depnotifyrun)
 
