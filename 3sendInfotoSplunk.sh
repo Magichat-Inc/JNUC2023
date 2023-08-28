@@ -11,8 +11,8 @@
 #
 # The settings you need to set:
 # 1. splunkHECURL (Splunk URL), dashboardHECtoken (Main HEC token), endingHECtoken (Separate HEC token for notifying Slack)
-# 2. From which point of time you would like to send the AfterMath data to splunk (for example, 9 hours or 1 day from NOW ), you can change on line 59.
-# Default setting is collecting information from 9 hours from now.
+# 2. From which point of time you would like to send the AfterMath data to splunk (for example, 9 hours or 1 day from NOW )
+# Default setting is collecting information from 9 hours from now. You can change the setting on line 59. 
 # 3. Due to this issue (https://github.com/jamf/aftermath/issues/49), We convert time of Syslog events to JST(Japan Standard Time) which is UTC+9. 
 # If you would like to convert to your timezone, you can change Number of seconds added on line 71. (Number of seconds=Number of hours differ from UTC*60*60)
 #===================================
