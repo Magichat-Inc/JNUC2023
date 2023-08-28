@@ -50,7 +50,7 @@
 #
 # The dependencies must be pre-staged to your devices in order for this workflow to complete fully.  Please the see github.com/jamf/jamfprotect Wiki for more information.
 
-####################################################################################################
+
 # For JNUC 2023 conference
 # https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
 # Edited by Natnicha Sangsasitorn, Magic Hat Inc. 
@@ -58,7 +58,7 @@
 # To able to send the information to Splunk, we need to whitelist Splunk communication.
 # Thus, we set additional Splunk IP address and Splunk HTTP Endpoint Collection URL (Line 73-74) into PF's allow rule.
 # Also, before the network isolation enforces, killing reverseShell process is added and executed. (Line 261-263)
-
+####################################################################################################
 #####################################################
 ############# Script Configuration Area #############
 #####################################################
