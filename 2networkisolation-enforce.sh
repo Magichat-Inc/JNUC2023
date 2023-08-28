@@ -54,7 +54,7 @@
 # For JNUC 2023 conference
 # https://reg.rainfocus.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa
 # Edited by Natnicha Sangsasitorn, Magic Hat Inc. 
-# 15/07/2023
+# 28/08/2023
 # To able to send the information to Splunk, we need to whitelist Splunk communication.
 # Thus, we set additional Splunk IP address and Splunk HTTP Endpoint Collection URL (Line 76-77) into PF's allow rule.
 # Also, before the network isolation enforces, killing reverseShell process is added and executed. (Line 264-266)
