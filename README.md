@@ -18,7 +18,7 @@ In this session, I will walk through how to create a “cause analysis workflow�
 Session details & video: <https://reg.jamf.com/flow/jamf/jnuc2023/home23/page/sessioncatalog/session/1682577708226001MoLa> 
 
 ## [Overview](#overview)
-These scripts are used for setting up the workflow shown in "Attacks and Suspicious Events’ Cause Analysis Workflow" session on JNUC 2023 Conference.
+These scripts are used for setting up the workflow shown in "Attacks and Suspicious Events’ Cause Analysis Workflow" session held on Wednesday, September 20th at the JNUC 2023 Conference.
 
 There are 4 scripts:
 - 0checkInstallation-rundepNotifyscript.sh
@@ -28,7 +28,7 @@ There are 4 scripts:
 
 ## [0checkInstallation-rundepNotifyscript](#0checkinstallation-rundepnotifyscript)
 
-This script is for checking installation of afterMath (Incident Response tool) and depNotify (Graphical User Interface Popup tool) and run installation if the machine hasn't installed those tools yet. If both tools are installed, then it will execute [1depNotifyRun](#1depnotifyrun) script (main script).
+This script to confirm whether afterMath (Incident Response tool) and DepNotify (Graphical User Interface popup tool) have been previously installed, and to run the installation if the machine hasn't installed those tools yet. If both tools are installed, then it will execute the [1depNotifyRun](#1depnotifyrun) script (main script).
 
 ## [1depNotifyRun](#1depnotifyrun)
 
@@ -37,8 +37,8 @@ This script is the main script for showing the progress popup while running belo
 - Gather all activities information and forward those information to third party SIEM tool (Splunk)
 
 ## [2networkisolation-enforce](#2networkisolation-enforce)
-To remediate the attack or breach (Reverse shell attack is used as a sample in the workflow), we kill the interactive shell process, following by enforcing network isolation to make sure that during analysis, there is no further attempts from the attackers. So, no communication is allowed except Jamf and Splunk communication. 
+To remediate the attack or breach (Reverse shell attack is used as an example in the workflow), we kill the interactive shell process, then enforce network isolation to make sure that during analysis there are no further attempts from the attackers. This means that no communication will be allowed except from Jamf and Splunk communication.
 
 ## [3sendInfotoSplunk](#3sendinfotosplunk)
-For incident response, AfterMath tool is used to gather all the evidences and events happened on the affected computers. Then, those information will be forwarded to Splunk for further analysis.
+For incident response, the AfterMath tool is used to gather any evidence and events that occurred on the affected computer. Then, that information will be forwarded to Splunk for further analysis.
 
